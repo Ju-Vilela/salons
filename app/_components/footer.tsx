@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <footer>
       <Card>
-        <CardContent className="px-5 py-6">
+        <CardContent className="px-5 py-6 flex items-center justify-center">
           <p className="text-sm text-gray-400">
-            © 2023 Projeto Integrador II - Univesp | <span className="font-bold">Alunos DRP01-PJI240-SALA-006GRUPO-009</span>
+            © 2025 Projeto Integrador III - Univesp | <span className="font-bold">DRP01-PJI310-SALA-005GRUPO-004</span>
           </p>
         </CardContent>
       </Card>
