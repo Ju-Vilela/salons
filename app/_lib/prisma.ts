@@ -1,17 +1,28 @@
 import { PrismaClient } from "@prisma/client"
 
+// Configuração otimizada para Vercel + Supabase
+const prismaClientSingleton = () => {
+  return new PrismaClient({
+    datasources: {
+      db: {
+        url: process.env.DATABASE_URL + 
+          (process.env.NODE_ENV === "production" 
+            ? "?pgbouncer=true&connection_limit=5&pool_timeout=10"
+            : "")
+      }
+    },
+    log: ['error'] // Apenas logs de erro em produção
+  })
+}
+
 declare global {
-  var cachedPrisma: PrismaClient
+  var prismaGlobal: undefined | ReturnType<typeof prismaClientSingleton>
 }
 
-let prisma: PrismaClient
-if (process.env.NODE_ENV === "production") {
-  prisma = new PrismaClient()
-} else {
-  if (!global.cachedPrisma) {
-    global.cachedPrisma = new PrismaClient()
-  }
-  prisma = global.cachedPrisma
-}
+const db = globalThis.prismaGlobal ?? prismaClientSingleton()
 
-export const db = prisma
+export default db
+
+if (process.env.NODE_ENV !== "production") {
+  globalThis.prismaGlobal = db
+}
