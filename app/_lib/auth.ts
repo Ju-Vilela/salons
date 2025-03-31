@@ -1,4 +1,4 @@
-import { db } from "./prisma"
+import db from "@/app/_lib/prisma"
 import { Adapter } from "next-auth/adapters"
 import { AuthOptions } from "next-auth"
 import { PrismaAdapter } from "@auth/prisma-adapter"
