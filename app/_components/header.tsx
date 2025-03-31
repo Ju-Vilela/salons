@@ -13,10 +13,8 @@ const Header = () => {
     <Card>
       <CardContent className="flex flex-row items-center justify-between p-5">
         <Link href="/">
-        <h1 className="font-bold text-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-  AgendEx
-</h1>
-          <span className="text-gray-400">Transformando beleza em prioridade!</span>
+        <h1 className="font-bold text-3xl bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 bg-clip-text text-transparent">Salons</h1>
+          <span className="text-gray-400">Tudo em um só lugar.</span>
         </Link>
 
         <Sheet>
