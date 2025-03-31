@@ -12,7 +12,7 @@ import { Button } from "@/app/_components/ui/button"
 import { ChevronLeftIcon, Clock, LucidePhone, MapPinIcon, MenuIcon, PhoneCall, PhoneForwarded, PhoneIcon, PhoneIncoming, StarIcon } from "lucide-react"
 import { getServerSession } from "next-auth"
 import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
-import { db } from "@/app/_lib/prisma"
+import db from "@/app/_lib/prisma"
 import Header from "@/app/_components/header"
 
 interface BarbershopPageProps {
