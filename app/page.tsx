@@ -2,7 +2,7 @@ import Header from "@/app/_components/header"
 import BarbershopItem from "@/app/_components/barbershop/barbershop-item"
 import Search from "@/app/_components/barbershop/search"
 
-import { db } from "@/app/_lib/prisma"
+import db from "@/app/_lib/prisma"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/_lib/auth"
 import { format } from "date-fns"
