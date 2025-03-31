@@ -1,4 +1,3 @@
-// @/app/_lib/prisma.ts
 import { PrismaClient } from "@prisma/client"
 
 const prismaClientSingleton = () => {
@@ -18,9 +17,14 @@ declare global {
   var prisma: undefined | ReturnType<typeof prismaClientSingleton>
 }
 
-const prisma = globalThis.prisma ?? prismaClientSingleton()
-export default prisma
+const db = globalThis.prisma ?? prismaClientSingleton()
+
+// Exportação nomeada para compatibilidade
+export const prisma = db
+
+// Exportação padrão para compatibilidade com imports existentes
+export default db
 
 if (process.env.NODE_ENV !== "production") {
-  globalThis.prisma = prisma
+  globalThis.prisma = db
 }
