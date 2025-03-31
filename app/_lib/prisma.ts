@@ -1,3 +1,4 @@
+// @/app/_lib/prisma.ts
 import { PrismaClient } from "@prisma/client"
 
 const prismaClientSingleton = () => {
@@ -6,11 +7,10 @@ const prismaClientSingleton = () => {
       db: {
         url: process.env.DATABASE_URL + 
           (process.env.NODE_ENV === "production" 
-            ? "?pgbouncer=true&connection_limit=5&pool_timeout=10"
+            ? "?pgbouncer=true&connection_limit=5"
             : "")
       }
-    },
-    log: ['error']
+    }
   })
 }
 
@@ -18,14 +18,9 @@ declare global {
   var prisma: undefined | ReturnType<typeof prismaClientSingleton>
 }
 
-const db = globalThis.prisma ?? prismaClientSingleton()
-
-// Exportação nomeada para compatibilidade
-export const prisma = db
-
-// Exportação padrão para compatibilidade com imports existentes
-export default db
+const prisma = globalThis.prisma ?? prismaClientSingleton()
+export default prisma
 
 if (process.env.NODE_ENV !== "production") {
-  globalThis.prisma = db
+  globalThis.prisma = prisma
 }
