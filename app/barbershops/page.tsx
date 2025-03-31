@@ -1,4 +1,4 @@
-import { db } from "@/app/_lib/prisma"
+import db from "@/app/_lib/prisma"
 import BarbershopItem from "@/app/_components/barbershop/barbershop-item"
 import Header from "@/app/_components/header"
 import Search from "@/app/_components/barbershop/search"
