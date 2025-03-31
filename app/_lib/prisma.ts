@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client"
 
-// Configuração otimizada para Vercel + Supabase
 const prismaClientSingleton = () => {
   return new PrismaClient({
     datasources: {
@@ -11,18 +10,22 @@ const prismaClientSingleton = () => {
             : "")
       }
     },
-    log: ['error'] // Apenas logs de erro em produção
+    log: ['error']
   })
 }
 
 declare global {
-  var prismaGlobal: undefined | ReturnType<typeof prismaClientSingleton>
+  var prisma: undefined | ReturnType<typeof prismaClientSingleton>
 }
 
-const db = globalThis.prismaGlobal ?? prismaClientSingleton()
+const db = globalThis.prisma ?? prismaClientSingleton()
 
+// Exportação nomeada para compatibilidade
+export const prisma = db
+
+// Exportação padrão para compatibilidade com imports existentes
 export default db
 
 if (process.env.NODE_ENV !== "production") {
-  globalThis.prismaGlobal = db
+  globalThis.prisma = db
 }
