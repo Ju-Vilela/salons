@@ -1,9 +1,9 @@
+// ./app/_data/barbershop-service/create-service.ts
 "use server"
-
-import { db } from "@/app/_lib/prisma";
-import { authOptions } from "@/app/_lib/auth";
-import { BarbershopService } from "@prisma/client";
-import { getServerSession } from "next-auth";
+import prisma from "@/app/_lib/prisma" // Corrigido aqui
+import { authOptions } from "@/app/_lib/auth"
+import { BarbershopService } from "@prisma/client"
+import { getServerSession } from "next-auth"
 
 interface CreateServiceProps {
   barbershopId: string;
