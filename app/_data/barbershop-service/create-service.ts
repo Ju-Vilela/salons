@@ -1,6 +1,6 @@
 "use server"
 
-import { db } from "@/app/_lib/prisma";
+import db from "@/app/_lib/prisma"
 import { authOptions } from "@/app/_lib/auth";
 import { BarbershopService } from "@prisma/client";
 import { getServerSession } from "next-auth";
