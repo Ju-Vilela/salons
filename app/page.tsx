@@ -36,7 +36,7 @@ const Home = async () => {
 
 
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Barbearias e salões de beleza
+          Salões disponiveis
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
